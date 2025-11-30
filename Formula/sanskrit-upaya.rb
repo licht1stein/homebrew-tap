@@ -17,10 +17,17 @@ class SanskritUpaya < Formula
     cp "Icon.png", "cmd/desktop/"
     cp "FyneApp.toml", "cmd/desktop/"
 
-    # Build the .app bundle
+    # Build the binary first with version ldflags
     ENV["CGO_ENABLED"] = "1"
+    ldflags = %W[
+      -s -w
+      -X main.Version=v#{version}
+    ]
+    system "go", "build", *std_go_args(ldflags:, output: "cmd/desktop/sanskrit-upaya"), "./cmd/desktop"
+
+    # Package the pre-built binary into .app bundle
     cd "cmd/desktop" do
-      system fyne, "package", "-os", "darwin", "-release", "--app-version", version.to_s
+      system fyne, "package", "-os", "darwin", "-release", "--app-version", version.to_s, "-exe", "sanskrit-upaya"
     end
 
     # Install the .app bundle to the prefix
