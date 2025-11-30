@@ -26,31 +26,22 @@ class SanskritUpaya < Formula
     # Install the .app bundle to the prefix
     prefix.install "cmd/desktop/Sanskrit Upāya.app"
 
-    # Create a symlink in bin for CLI access
+    # Create a launcher script in bin
+    # Uses opt_prefix which is a stable symlink to the current version
     (bin/"sanskrit-upaya").write <<~EOS
       #!/bin/bash
-      open "#{prefix}/Sanskrit Upāya.app"
+      open "#{opt_prefix}/Sanskrit Upāya.app"
     EOS
-  end
-
-  def post_install
-    # Link the app to ~/Applications (user-writable, Spotlight-indexed)
-    user_apps = Pathname.new(Dir.home)/"Applications"
-    user_apps.mkpath
-    app_path = prefix/"Sanskrit Upāya.app"
-    target = user_apps/"Sanskrit Upāya.app"
-    target.unlink if target.symlink? || target.exist?
-    target.make_symlink(app_path)
   end
 
   def caveats
     <<~EOS
-      Sanskrit Upāya has been linked to ~/Applications.
-      You can find it in Spotlight or Launchpad.
+      To launch the app, run:
+        sanskrit-upaya
+
+      Tip: Right-click the dock icon → Options → Keep in Dock
 
       On first run, the app will download the dictionary database (~670MB).
-      The database will be stored in:
-        ~/Library/Application Support/sanskrit-dictionary/sanskrit.db
     EOS
   end
 
