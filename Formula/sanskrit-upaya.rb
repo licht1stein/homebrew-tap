@@ -2,7 +2,7 @@ class SanskritUpaya < Formula
   desc "Cross-platform Sanskrit dictionary with full-text search across 36 dictionaries"
   homepage "https://github.com/licht1stein/sanskrit-upaya"
   url "https://github.com/licht1stein/sanskrit-upaya/archive/refs/tags/v1.0.0.tar.gz"
-  sha256 "0019dfc4b32d63c1392aa264aed2253c1e0c2fb09216f8e2cc269bbfb8bb49b5"
+  sha256 "5dfa5fcbebed327b1fb34266ee0dbaeff48fde5a56c2827e32dfe4396d290216"
   license "MIT"
 
   depends_on "go" => :build
