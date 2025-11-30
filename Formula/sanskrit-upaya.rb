@@ -8,10 +8,9 @@ class SanskritUpaya < Formula
   depends_on "go" => :build
 
   def install
-    # Set version in binary
     ldflags = %W[
       -s -w
-      -X main.Version=#{version}
+      -X main.Version=v#{version}
     ]
 
     system "go", "build", *std_go_args(ldflags:), "./cmd/desktop"
