@@ -6,25 +6,26 @@ Personal Homebrew tap for @licht1stein.
 
 ```bash
 brew tap licht1stein/tap
-brew install sanskrit-upaya
+brew install --cask sanskrit-upaya
 ```
 
 Or install directly:
 
 ```bash
-brew install licht1stein/tap/sanskrit-upaya
+brew install --cask licht1stein/tap/sanskrit-upaya
 ```
 
-After installation, launch the app:
+## Migrating from the old Formula
+
+If you previously installed `sanskrit-upaya` as a formula, uninstall it first:
 
 ```bash
-sanskrit-upaya
+brew uninstall sanskrit-upaya
+brew install --cask sanskrit-upaya
 ```
 
-To keep it in your dock, right-click the dock icon and select **Options → Keep in Dock**.
+## Available Casks
 
-## Available Formulas
-
-| Formula                                                         | Description                                                                     |
+| Cask                                                            | Description                                                                     |
 | --------------------------------------------------------------- | ------------------------------------------------------------------------------- |
 | [sanskrit-upaya](https://github.com/licht1stein/sanskrit-upaya) | Cross-platform Sanskrit dictionary with full-text search across 36 dictionaries |
