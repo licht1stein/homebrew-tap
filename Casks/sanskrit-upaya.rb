@@ -9,7 +9,13 @@ cask "sanskrit-upaya" do
 
   app "Sanskrit Upāya.app"
 
-  conflicts_with formula: "sanskrit-upaya"
+  preflight do
+    # Auto-uninstall the old formula if present
+    system_command "#{HOMEBREW_PREFIX}/bin/brew",
+                   args: ["uninstall", "--formula", "sanskrit-upaya"],
+                   sudo: false,
+                   print_stderr: false
+  end
 
   postflight do
     system_command "/usr/bin/xattr",
