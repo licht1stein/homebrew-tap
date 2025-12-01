@@ -10,7 +10,6 @@ cask "sanskrit-upaya" do
   depends_on formula: "go"
 
   app "Sanskrit Upāya.app"
-  binary "#{appdir}/sanskrit-upaya-mcp"
 
   postflight do
     system_command "/usr/bin/xattr",
@@ -25,12 +24,12 @@ cask "sanskrit-upaya" do
                             "https://github.com/licht1stein/sanskrit-upaya.git", tmpdir]
       system_command "#{HOMEBREW_PREFIX}/bin/go",
                      args: ["build", "-ldflags", "-s -w -X main.Version=#{version}",
-                            "-o", "#{appdir}/sanskrit-upaya-mcp", "./cmd/mcp"],
+                            "-o", "#{HOMEBREW_PREFIX}/bin/sanskrit-upaya-mcp", "./cmd/mcp"],
                      chdir: tmpdir
     end
   end
 
-  uninstall delete: "#{appdir}/sanskrit-upaya-mcp"
+  uninstall delete: "#{HOMEBREW_PREFIX}/bin/sanskrit-upaya-mcp"
 
   caveats <<~EOS
     #{token} is not notarized by Apple.
