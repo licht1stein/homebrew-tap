@@ -1,6 +1,6 @@
 cask "sanskrit-upaya" do
-  version "1.1.1"
-  sha256 "05e1c3e2a754286f3a9cb1851d60aa185dc1832d1354e2b60c071ba33cf84ba4"
+  version "1.1.2"
+  sha256 "88ecc347de233b8e1e62f1e8bee5bd5436be46f88bf551a9db47d81ce34c6ee2"
 
   url "https://github.com/licht1stein/sanskrit-upaya/releases/download/v#{version}/sanskrit-upaya-v#{version}-macos.dmg"
   name "Sanskrit Upaya"
